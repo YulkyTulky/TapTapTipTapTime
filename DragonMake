@@ -1,0 +1,22 @@
+---
+name: TapTapTipTapTime
+icmd: killall -9 backboardd
+
+all:
+  targetvers: 13.0
+  archs:
+    - arm64
+    - arm64e
+
+TapTapTipTapTime:
+  type: tweak
+  logos_files:
+    - "Tweak.x"
+
+TapTapTipTapTimePreferences:
+  dir: TapTapTipTapTimePreferences
+  type: prefs
+  objc_files:
+    - TTTRootListController.m
+    - TTTRootHeaderView.m
+    - TTTSwitchCell.m

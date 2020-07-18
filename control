@@ -1,0 +1,9 @@
+Package: com.yulkytulky.taptaptiptaptime
+Name: TapTapTipTapTime
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: YulkyTulky
+Author: YulkyTulky
+Section: Tweaks
