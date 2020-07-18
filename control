@@ -1,9 +1,9 @@
 Package: com.yulkytulky.taptaptiptaptime
 Name: TapTapTipTapTime
 Depends: mobilesubstrate
-Version: 0.0.1
+Version: 1.0
 Architecture: iphoneos-arm
-Description: An awesome MobileSubstrate tweak!
+Description: Tap on the time to see the date in the status bar!
 Maintainer: YulkyTulky
 Author: YulkyTulky
 Section: Tweaks

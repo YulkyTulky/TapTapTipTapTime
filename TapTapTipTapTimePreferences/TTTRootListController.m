@@ -35,4 +35,16 @@
 
 }
 
+- (void)github {
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/YulkyTulky/TapTapTipTapTime"] options:@{} completionHandler:nil];
+
+}
+
+- (void)discord {
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://discord.gg/gbzhzV"] options:@{} completionHandler:nil];
+
+}
+
 @end
