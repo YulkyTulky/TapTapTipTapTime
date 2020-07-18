@@ -97,6 +97,9 @@ static void loadPrefs() {
 	showYear = [preferences objectForKey:@"showYear"] ? [[preferences objectForKey:@"showYear"] boolValue] : YES;
 	dayBeforeMonth = [preferences objectForKey:@"dayBeforeMonth"] ? [[preferences objectForKey:@"dayBeforeMonth"] boolValue] : NO;
 
+	NSDictionary *userInfo = @{ @"dateShowing": [NSNumber numberWithBool:dateShowing] };
+	[[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:userInfo];
+
 }
 
 %ctor {
