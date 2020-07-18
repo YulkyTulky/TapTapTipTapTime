@@ -17,6 +17,8 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Enable Tweak</string>
+			<key>footerText</key>
+			<string>Respring to enable/disable; Other preferences updated dynamically</string>
 	  	</dict>
 		<dict>
 			<key>cell</key>

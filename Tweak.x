@@ -107,6 +107,8 @@ static void loadPrefs() {
 	NSMutableDictionary *preferences = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.yulkytulky.taptaptiptaptime.plist"];
 	dateShowing = [preferences objectForKey:@"_dateShowing"] ? [[preferences objectForKey:@"_dateShowing"] boolValue] : NO;
 
-	%init;
+	if (enabled) {
+		%init;
+	}
 
 }
