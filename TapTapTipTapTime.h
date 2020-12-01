@@ -10,9 +10,12 @@ NSString *separator;
 BOOL showYear;
 BOOL dayBeforeMonth;
 
+BOOL autoResetEnabled;
+
 //--Globally Accessible Variables--//
 static BOOL dateShowing;
 static NSString *notificationName = @"com.yulkytulky.taptaptiptaptime/changedateshowing";
+static NSTimer *timer;
 
 //--Interface Declarations--//
 @interface _UIStatusBarStringView: UILabel

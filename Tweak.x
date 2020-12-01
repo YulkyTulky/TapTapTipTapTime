@@ -14,7 +14,7 @@ static NSString *dateStringFactory() {
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateFormat:format];
 	return [formatter stringFromDate:[NSDate date]];
-	
+
 }
 
 @implementation DimitarStatusBarTimeStringView
@@ -45,6 +45,27 @@ static NSString *dateStringFactory() {
 	[[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:userInfo];
 	[preferences writeToFile:@"/var/mobile/Library/Preferences/com.yulkytulky.taptaptiptaptime.plist" atomically:YES];
 
+	if (autoResetEnabled) {
+		
+		NSInteger backToTimeDelay = 10;
+
+		if (dateShowing) {
+			timer = [NSTimer scheduledTimerWithTimeInterval:backToTimeDelay target:self selector:@selector(timerFired:) userInfo:nil repeats:NO];
+		} else {
+			[timer invalidate];
+		}
+	}
+}
+
+- (void)timerFired:(NSTimer *)arg1 {
+
+	dateShowing = NO;
+	NSMutableDictionary *preferences = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.yulkytulky.taptaptiptaptime.plist"];
+	[preferences setObject:@(dateShowing) forKey:@"_dateShowing"];
+
+	NSDictionary *userInfo = @{ @"dateShowing": @(dateShowing) };
+	[[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:userInfo];
+	[preferences writeToFile:@"/var/mobile/Library/Preferences/com.yulkytulky.taptaptiptaptime.plist" atomically:YES];
 }
 
 @end
@@ -96,6 +117,8 @@ static void loadPrefs() {
 	separator = [preferences objectForKey:@"separator"] ? [preferences objectForKey:@"separator"] : @"/";
 	showYear = [preferences objectForKey:@"showYear"] ? [[preferences objectForKey:@"showYear"] boolValue] : YES;
 	dayBeforeMonth = [preferences objectForKey:@"dayBeforeMonth"] ? [[preferences objectForKey:@"dayBeforeMonth"] boolValue] : NO;
+
+	autoResetEnabled = [preferences objectForKey:@"autoResetEnabled"] ? [[preferences objectForKey:@"autoResetEnabled"] boolValue] : NO;
 
 	NSDictionary *userInfo = @{ @"dateShowing": [NSNumber numberWithBool:dateShowing] };
 	[[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:userInfo];
